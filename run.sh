@@ -1,3 +1,5 @@
+export NODE_ENV=production
+
 echo express >> results.txt ;
 node expressserver.js & sleep 5 ; 
 ab -k -n 50000 -c 100 -t 20 http://127.0.0.1:8000/ | grep "Requests per second:" >> results.txt ;
@@ -9,6 +11,20 @@ node hapiserver.js & sleep 5 ;
 ab -k -n 50000 -c 100 -t 20 http://127.0.0.1:8000/ | grep "Requests per second:" >> results.txt ;
 pkill -f hapiserver ;
 sleep 5 
+
+echo aero >> results.txt ;
+node aero.js & sleep 5 ;
+ab -k -n 50000 -c 100 -t 20 http://127.0.0.1:4000/ | grep "Requests per second:" >> results.txt ;
+pkill -f aero ;
+sleep 5 
+
+
+echo fastify >> results.txt ;
+node fastify.js & sleep 5 ;
+ab -k -n 50000 -c 100 -t 20 http://127.0.0.1:8000/ | grep "Requests per second:" >> results.txt ;
+pkill -f fastify ;
+sleep 5 
+
 
 echo micro >> results.txt ;
 node micro.js & sleep 5 ;

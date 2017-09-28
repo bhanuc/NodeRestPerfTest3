@@ -7,6 +7,8 @@ npm install micro
 npm install express
 npm install restify
 npm install koa
+npm install aero
+npm install fastify
 npm install n
 npm install total.js
 npm install sails -g
